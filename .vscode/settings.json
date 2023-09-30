@@ -2,5 +2,5 @@
   "editor.codeActionsOnSave": {
     "source.organizeImports": true
   },
-  "cSpell.words": ["cupertino"]
+  "cSpell.words": ["cupertino", "ionicons", "oktoast"]
 }
