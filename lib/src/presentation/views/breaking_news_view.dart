@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../core/utils/extensions/scroll_controller_extension.dart';
+import '../../domain/models/article.dart';
 import '../cubits/remote_articles/remote_articles_cubit.dart';
+import '../widgets/article_widget.dart';
 
 class BreakingNewsView extends HookWidget {
   const BreakingNewsView({super.key});
@@ -33,9 +34,7 @@ class BreakingNewsView extends HookWidget {
         centerTitle: true,
         actions: [
           GestureDetector(
-            onTap: () {
-              context.goNamed('saved-articles');
-            },
+            onTap: () {},
             child: const Padding(
               padding: EdgeInsets.only(right: 14),
               child: Icon(
@@ -63,14 +62,48 @@ class BreakingNewsView extends HookWidget {
                 ),
               );
             case RemoteArticlesSuccess:
-              return const Center(
-                child: Text('Success'),
+              return _buildArticles(
+                scrollController,
+                state.articles,
+                state.noMoreData,
               );
             default:
               return const SizedBox();
           }
         },
       ),
+    );
+  }
+
+  Widget _buildArticles(
+    ScrollController scrollController,
+    List<Article> articles,
+    bool noMoreData,
+  ) {
+    return CustomScrollView(
+      controller: scrollController,
+      slivers: [
+        SliverList(
+          delegate: SliverChildBuilderDelegate(
+            (context, index) => ArticleWidget(
+              article: articles[index],
+            ),
+            childCount: articles.length,
+          ),
+        ),
+        if (!noMoreData)
+          const SliverToBoxAdapter(
+            child: Padding(
+              padding: EdgeInsets.only(
+                top: 14,
+                bottom: 32,
+              ),
+              child: Center(
+                child: CircularProgressIndicator(),
+              ),
+            ),
+          )
+      ],
     );
   }
 }
