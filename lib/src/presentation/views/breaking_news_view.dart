@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news_app_with_clean_architecture/src/utils/constants/strings.dart';
+import 'package:news_app_with_clean_architecture/src/core/utils/constants.dart';
 
 class BreakingNewsView extends StatelessWidget {
   const BreakingNewsView({super.key});
