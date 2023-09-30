@@ -37,3 +37,16 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  fonts:
+    - family: Butler
+      fonts:
+        - asset: assets/fonts/Butler_Bold.ttf
+        - asset: assets/fonts/Butler_Light.ttf
+        - asset: assets/fonts/Butler_Regular.ttf
+
+    - family: IBM
+      fonts:
+        - asset: assets/fonts/IBMPlexSans-Bold.ttf
+        - asset: assets/fonts/IBMPlexSans-Light.ttf
+        - asset: assets/fonts/IBMPlexSans-Regular.ttf

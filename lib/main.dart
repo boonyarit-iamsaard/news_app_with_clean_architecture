@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:news_app_with_clean_architecture/src/config/app_themes.dart';
+import 'package:news_app_with_clean_architecture/src/utils/constants/strings.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   runApp(const App());
 }
 
@@ -11,15 +15,17 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'News App',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      title: appTitle,
+      theme: AppTheme.light,
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: const Text('News App'),
+          title: const Text(
+            appTitle,
+            style: TextStyle(
+              color: Colors.black,
+            ),
+          ),
           centerTitle: true,
         ),
         body: const Center(
