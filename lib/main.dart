@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:oktoast/oktoast.dart';
 
 import 'src/config/router/app_router.dart';
 import 'src/config/theme/app_theme.dart';
@@ -31,11 +32,13 @@ class App extends StatelessWidget {
           )..getBreakingNews(),
         )
       ],
-      child: MaterialApp.router(
-        debugShowCheckedModeBanner: false,
-        title: appTitle,
-        theme: AppTheme.light,
-        routerConfig: _appRouter.router,
+      child: OKToast(
+        child: MaterialApp.router(
+          debugShowCheckedModeBanner: false,
+          title: appTitle,
+          theme: AppTheme.light,
+          routerConfig: _appRouter.router,
+        ),
       ),
     );
   }
