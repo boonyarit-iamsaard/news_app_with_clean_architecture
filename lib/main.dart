@@ -1,42 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:news_app_with_clean_architecture/src/config/app_router.dart';
 import 'package:news_app_with_clean_architecture/src/config/app_themes.dart';
 import 'package:news_app_with_clean_architecture/src/utils/constants/strings.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  runApp(const App());
+  runApp(App());
 }
 
 class App extends StatelessWidget {
-  const App({super.key});
+  App({super.key});
+
+  final _appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: appTitle,
       theme: AppTheme.light,
-      home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: const Text(
-            appTitle,
-            style: TextStyle(
-              color: Colors.black,
-            ),
-          ),
-          centerTitle: true,
-        ),
-        body: const Center(
-          child: Text(
-            'Welcome to News App with Clean Architecture',
-            style: TextStyle(
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-        ),
-      ),
+      routerConfig: _appRouter.router,
+      routerDelegate: _appRouter.router.routerDelegate,
+      routeInformationParser: _appRouter.router.routeInformationParser,
     );
   }
 }
