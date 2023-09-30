@@ -39,14 +39,14 @@ flutter:
   uses-material-design: true
 
   fonts:
-    - family: Butler
+    - family: ReithSans
       fonts:
-        - asset: assets/fonts/Butler_Bold.ttf
-        - asset: assets/fonts/Butler_Light.ttf
-        - asset: assets/fonts/Butler_Regular.ttf
+        - asset: assets/fonts/BBCReithSans_A_Bd.ttf
+        - asset: assets/fonts/BBCReithSans_A_Lt.ttf
+        - asset: assets/fonts/BBCReithSans_A_Rg.ttf
 
-    - family: IBM
+    - family: ReithSerif
       fonts:
-        - asset: assets/fonts/IBMPlexSans-Bold.ttf
-        - asset: assets/fonts/IBMPlexSans-Light.ttf
-        - asset: assets/fonts/IBMPlexSans-Regular.ttf
+        - asset: assets/fonts/BBCReithSerif_A_Bd.ttf
+        - asset: assets/fonts/BBCReithSerif_A_Lt.ttf
+        - asset: assets/fonts/BBCReithSerif_A_Rg.ttf

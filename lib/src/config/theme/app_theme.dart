@@ -10,7 +10,7 @@ abstract class AppTheme {
       scaffoldBackgroundColor: Colors.white,
       primaryColor: Colors.black,
       splashColor: Colors.transparent,
-      fontFamily: 'IBM',
+      fontFamily: 'ReithSans',
       colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.black),
     );
   }
