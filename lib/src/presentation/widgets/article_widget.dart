@@ -5,17 +5,23 @@ import '../../domain/models/article.dart';
 
 class ArticleWidget extends StatelessWidget {
   final Article article;
+  final bool isRemovable;
+  final void Function(Article article)? onRemove;
+  final void Function(Article article)? onArticlePressed;
 
   const ArticleWidget({
     Key? key,
     required this.article,
+    this.isRemovable = false,
+    this.onRemove,
+    this.onArticlePressed,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
-      onTap: () {},
+      onTap: _onArticlePressed,
       child: Container(
         padding: const EdgeInsetsDirectional.only(
           start: 14,
@@ -28,6 +34,7 @@ class ArticleWidget extends StatelessWidget {
           children: [
             _buildImage(context),
             _buildTitleAndDescription(),
+            _buildRemovableArea(),
           ],
         ),
       ),
@@ -51,7 +58,7 @@ class ArticleWidget extends StatelessWidget {
               errorBuilder: (_, __, ___) {
                 return const Center(
                   child: Icon(
-                    Icons.error_outline,
+                    Ionicons.image_outline,
                     color: Colors.grey,
                   ),
                 );
@@ -59,6 +66,23 @@ class ArticleWidget extends StatelessWidget {
             ),
           )),
     );
+  }
+
+  Widget _buildRemovableArea() {
+    if (isRemovable) {
+      return GestureDetector(
+        onTap: _onRemove,
+        child: const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 8),
+          child: Icon(
+            Ionicons.trash_outline,
+            color: Colors.red,
+          ),
+        ),
+      );
+    }
+
+    return Container();
   }
 
   Widget _buildTitleAndDescription() {
@@ -110,5 +134,17 @@ class ArticleWidget extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _onArticlePressed() {
+    if (onArticlePressed != null) {
+      onArticlePressed?.call(article);
+    }
+  }
+
+  void _onRemove() {
+    if (onRemove != null) {
+      onRemove?.call(article);
+    }
   }
 }
