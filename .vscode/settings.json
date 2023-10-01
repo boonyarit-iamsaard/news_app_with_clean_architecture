@@ -2,5 +2,12 @@
   "editor.codeActionsOnSave": {
     "source.organizeImports": true
   },
-  "cSpell.words": ["cupertino", "datasources", "ionicons", "oktoast", "Reith"]
+  "cSpell.words": [
+    "cupertino",
+    "datasources",
+    "ionicons",
+    "oktoast",
+    "Reith",
+    "sqflite"
+  ]
 }
